@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#fdf8f1" />
+  <title>Elio Li · 把复杂留给系统，把温柔留给日常</title>
+  <meta name="description" content="Elio Li 的个人博客：技术文章、项目实践、狗狗日常，以及一些关于交互与好奇心的小实验。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Elio Li · Java 后端开发" />
+  <meta property="og:description" content="技术文章、项目实践、狗狗日常，以及一个可以玩的泡泡实验室。" />
+  <script>
+    ; (function () {
+      try {
+        var saved = localStorage.getItem('theme')
+        var theme =
+          saved === 'light' || saved === 'dark'
+            ? saved
+            : window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light'
+        document.documentElement.dataset.theme = theme
+        var meta = document.querySelector('meta[name="theme-color"]')
+        if (meta) meta.setAttribute('content', theme === 'dark' ? '#171210' : '#fdf8f1')
+      } catch (e) {
+        document.documentElement.dataset.theme = 'light'
+      }
+    })()
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>

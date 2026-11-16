@@ -1226,6 +1226,20 @@ img {
   .nav-menu-btn {
     display: grid;
   }
+
+  .nav-mail,
+  .nav-mail.is-unread {
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    border-color: transparent;
+    background: transparent;
+  }
+
+  .nav-mail__label {
+    display: none;
+  }
 }
 
 @media (max-width: 760px) {
@@ -1342,33 +1356,67 @@ img {
 
 .nav-mail {
   position: relative;
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  border: 1px solid transparent;
-  border-radius: 50%;
-  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 38px;
+  padding: 0 12px 0 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 3%, transparent);
   color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  line-height: 1;
   transition:
     color 0.25s ease,
-    background-color 0.25s ease;
+    background-color 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .nav-mail:hover {
   color: var(--ink);
+  border-color: var(--line-strong);
   background: color-mix(in srgb, var(--ink) 6%, transparent);
+}
+
+.nav-mail.is-unread {
+  color: var(--ink);
+  border-color: color-mix(in srgb, #e0574c 30%, var(--line));
+  background: color-mix(in srgb, #e0574c 7%, transparent);
+  animation: mail-glow 3.2s ease-in-out infinite;
+}
+
+@keyframes mail-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(224, 87, 76, 0.16);
+  }
+
+  50% {
+    box-shadow: 0 0 0 6px rgba(224, 87, 76, 0);
+  }
+}
+
+.nav-mail__icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.nav-mail__label {
+  white-space: nowrap;
 }
 
 .nav-mail__badge {
   position: absolute;
-  top: 2px;
-  right: 1px;
+  top: -6px;
+  right: -7px;
   display: grid;
   place-items: center;
-  min-width: 16px;
-  height: 16px;
+  min-width: 15px;
+  height: 15px;
   padding: 0 4px;
   border-radius: 999px;
   background: #e0574c;
@@ -1380,7 +1428,18 @@ img {
   animation: mail-badge 2.8s ease-in-out infinite;
 }
 
+.nav-mail__badge--dot {
+  top: -3px;
+  right: -4px;
+  width: 7px;
+  min-width: 7px;
+  height: 7px;
+  padding: 0;
+  animation: none;
+}
+
 @keyframes mail-badge {
+
   0%,
   100% {
     transform: scale(1);

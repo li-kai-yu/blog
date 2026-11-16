@@ -135,10 +135,18 @@ export default function Nav() {
               type="button"
               className={`nav-mail${letterRead ? '' : ' is-unread'}`}
               aria-label={letterRead ? '打开来信' : '打开来信，1 封未读'}
+              title="写给你的一封信"
               onClick={openLetter}
             >
-              <Mail />
-              {letterRead ? null : <span className="nav-mail__badge">1</span>}
+              <span className="nav-mail__icon">
+                <Mail />
+                {letterRead ? (
+                  <span className="nav-mail__badge nav-mail__badge--dot" aria-hidden="true" />
+                ) : (
+                  <span className="nav-mail__badge">1</span>
+                )}
+              </span>
+              <span className="nav-mail__label">来信</span>
             </button>
             <ThemeToggle />
             <button

@@ -27,7 +27,7 @@ const strengths = [
   },
   {
     label: '框架与中间件',
-    text: '熟练使用 Spring Boot、MyBatis-Plus，了解 Nacos、Gateway 等微服务组件及 RabbitMQ、Elasticsearch 的基本原理与用法；熟悉 Git、Maven、Docker。',
+    text: '熟练使用 Spring Boot、MyBatis-Plus，了解 Nacos、Gateway 等微服务组件及 RabbitMQ、Elasticsearch 的基本原理与用法；熟悉 Git、Maven。',
   },
 ]
 
@@ -72,35 +72,29 @@ const projects: ResumeProject[] = [
     name: 'MukoBazaar 商城系统',
     latin: 'MUKOBAZAAR / B2C MARKETPLACE',
     meta: '独立开发 · 2026.06 – 2026.08',
-    stack:
-      'Java 17 / Spring Boot 3 / MyBatis-Plus / MySQL / Redis / Caffeine / RabbitMQ / Elasticsearch',
+    stack: 'Java 17 / Spring Boot 3 / MyBatis-Plus / MySQL / Redis / RabbitMQ',
     summary:
       '从零搭建的 B2C 前后端分离商城后端，负责表结构、接口设计与环境部署，覆盖商品、购物车、订单、支付、优惠券、评价及后台管理。',
     points: [
       {
         index: '01',
-        label: '核心业务',
-        text: '负责商品、购物车、订单、支付、优惠券、评价及后台管理等模块的接口开发，完成表结构设计与接口文档编写。',
+        label: '缓存双写',
+        text: '每日凌晨及服务启动时将热点商品与库存数据同步写入缓存，保证接口响应速度；库存出现不一致时以数据库为准强制覆盖缓存，避免脏数据长期存在。',
       },
       {
         index: '02',
-        label: '登录鉴权',
-        text: '基于 RBAC 模型完成身份认证与接口级权限校验，Token 存储于 Redis，支持主动退出登录。',
+        label: '库存防超卖',
+        text: '针对高并发下同一商品重复售卖的痛点，采用 Redis 原子预扣减、RabbitMQ 异步落库与数据库乐观锁兜底的方案；同时设计 15 分钟预扣减缓存与定时任务扫描的补偿机制，保证最终一致性。',
       },
       {
         index: '03',
-        label: '商品检索',
-        text: '使用 Elasticsearch 实现全文检索与多条件筛选，替代数据库模糊查询；Elasticsearch 异常时自动回退数据库查询，保证检索可用性。',
+        label: '支付回调幂等',
+        text: '针对微信、支付宝重复回调导致的重复发货风险，引入订单状态机（待支付 / 支付中 / 已发货）与数据库唯一索引，保证重复回调下只处理一次。',
       },
       {
         index: '04',
-        label: '缓存与库存',
-        text: '采用 Caffeine 与 Redis 两级缓存加速热点商品访问；通过用户维度幂等防止重复下单，库存条件更新防止超卖。',
-      },
-      {
-        index: '05',
-        label: '消息与订单',
-        text: '使用 RabbitMQ 延迟消息实现订单超时关闭、库存回补与优惠券释放。',
+        label: '防刷与缓存治理',
+        text: '使用布隆过滤器配合 Lua 脚本限流拦截恶意并发请求；采用分布式锁与缓存双写策略，处理热点商品（如节假日促销商品）的缓存穿透与击穿问题。',
       },
     ],
   },

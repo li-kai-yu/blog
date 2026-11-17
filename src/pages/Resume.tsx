@@ -37,7 +37,7 @@ const projects: ResumeProject[] = [
     latin: 'TRACESAGE / DISTRIBUTED TRACING',
     meta: '独立开发 · 2026.08 – 至今',
     stack:
-      'Java 17 / Spring Boot 3 / Spring Cloud Gateway / MyBatis-Plus / MySQL / Redis / RabbitMQ / Elasticsearch / JWT / Docker',
+      'Java 17 / Spring Boot 3 / Spring Cloud Gateway / MyBatis-Plus / MySQL / Redis / RabbitMQ / Elasticsearch',
     summary:
       '基于 DDD 四层架构的微服务可观测平台，用于分布式系统的链路追踪与故障定位，按 IAM、Tracing 两个业务模块拆分服务。',
     points: [

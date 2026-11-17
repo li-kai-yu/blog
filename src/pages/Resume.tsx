@@ -73,7 +73,7 @@ const projects: ResumeProject[] = [
     latin: 'MUKOBAZAAR / B2C MARKETPLACE',
     meta: '独立开发 · 2026.06 – 2026.08',
     stack:
-      'Java 17 / Spring Boot 3 / Spring Security / MyBatis-Plus / MySQL / Redis / Redisson / Caffeine / RabbitMQ / Elasticsearch / JWT / Docker',
+      'Java 17 / Spring Boot 3 / MyBatis-Plus / MySQL / Redis / Caffeine / RabbitMQ / Elasticsearch',
     summary:
       '从零搭建的 B2C 前后端分离商城后端，负责表结构、接口设计与环境部署，覆盖商品、购物车、订单、支付、优惠券、评价及后台管理。',
     points: [
@@ -85,7 +85,7 @@ const projects: ResumeProject[] = [
       {
         index: '02',
         label: '登录鉴权',
-        text: '基于 RBAC 模型，结合 Spring Security 与 JWT 实现身份认证与接口级权限校验，Token 存储于 Redis，支持主动退出登录。',
+        text: '基于 RBAC 模型完成身份认证与接口级权限校验，Token 存储于 Redis，支持主动退出登录。',
       },
       {
         index: '03',
@@ -95,12 +95,12 @@ const projects: ResumeProject[] = [
       {
         index: '04',
         label: '缓存与库存',
-        text: '采用 Caffeine 与 Redis 两级缓存加速热点商品访问，使用 Redisson 保证并发一致性；通过用户维度幂等防止重复下单，库存条件更新防止超卖。',
+        text: '采用 Caffeine 与 Redis 两级缓存加速热点商品访问；通过用户维度幂等防止重复下单，库存条件更新防止超卖。',
       },
       {
         index: '05',
-        label: '消息与部署',
-        text: '使用 RabbitMQ 延迟消息实现订单超时关闭、库存回补与优惠券释放；使用 Docker 编排 MySQL、Redis、RabbitMQ、Elasticsearch 等中间件。',
+        label: '消息与订单',
+        text: '使用 RabbitMQ 延迟消息实现订单超时关闭、库存回补与优惠券释放。',
       },
     ],
   },

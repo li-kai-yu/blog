@@ -64,7 +64,7 @@ export const projects: Project[] = [
       },
       {
         label: '登录鉴权',
-        text: '基于 RBAC 模型，结合 Spring Security 与 JWT 实现身份认证与接口级权限校验；Token 存储于 Redis，支持主动退出登录。',
+        text: '基于 RBAC 模型完成身份认证与接口级权限校验，Token 存储于 Redis，支持主动退出登录。',
       },
       {
         label: '商品检索',
@@ -72,11 +72,11 @@ export const projects: Project[] = [
       },
       {
         label: '缓存与库存',
-        text: '采用 Caffeine 与 Redis 两级缓存加速热点商品访问，使用 Redisson 保证并发一致性；通过用户维度幂等防止重复下单，库存条件更新防止超卖。',
+        text: '采用 Caffeine 与 Redis 两级缓存加速热点商品访问；通过用户维度幂等防止重复下单，库存条件更新防止超卖。',
       },
       {
-        label: '消息与部署',
-        text: '使用 RabbitMQ 延迟消息实现订单超时关闭、库存回补与优惠券释放；使用 Docker 编排 MySQL、Redis、RabbitMQ、Elasticsearch 等中间件。',
+        label: '消息与订单',
+        text: '使用 RabbitMQ 延迟消息实现订单超时关闭、库存回补与优惠券释放。',
       },
     ],
   },
